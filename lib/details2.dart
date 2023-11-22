@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vehical_rental_system/paymentpage.dart';
 import 'model_class.dart';
+import 'model_class_two.dart';
 
 
 class Details2 extends StatefulWidget {
@@ -21,7 +22,8 @@ class _DetailsState extends State<Details2> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    final rentalData = RentalData(amount: 4.5);
+    Vehicalname vehicalName = Vehicalname(nameof: 'Trek Remedy');
+    RentalData rentalData = RentalData(amount: 4.5);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -29,7 +31,7 @@ class _DetailsState extends State<Details2> {
           child: Text(
             'Bike ',
             style: TextStyle(
-              color: Colors.yellow,
+              color: Colors.deepOrangeAccent,
               fontStyle: FontStyle.italic,
               fontSize: 30,
             ),
@@ -67,13 +69,13 @@ class _DetailsState extends State<Details2> {
 
 
           ),
-          Center(
-            child: SvgPicture.asset(
-              'assets/shapes/cycle.svg',
-              height: 50,
-              width: 100,
-            ),
-          ),
+          // Center(
+          //   child: SvgPicture.asset(
+          //     'assets/shapes/cycle.svg',
+          //     height: 50,
+          //     width: 100,
+          //   ),
+          // ),
           Expanded(
             child: Stack(
               children: <Widget>[
@@ -85,7 +87,7 @@ class _DetailsState extends State<Details2> {
                     height: 300,
                     alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent.withOpacity(0.4),
+                      color: Colors.blue.withOpacity(0.9),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
@@ -124,9 +126,9 @@ class _DetailsState extends State<Details2> {
                                     width: screenWidth * 0.4,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      color: showSpecification?Colors.transparent:Colors.red,
+                                      color: showSpecification?Colors.transparent:Colors.blue,
                                       border: Border.all(
-                                        color: showSpecification?Colors.red:Colors.transparent, // Color of the outer boundary
+                                        color: showSpecification?Colors.white:Colors.transparent, // Color of the outer boundary
                                         width: 2, // Thickness of the outer boundary
                                       ),
 
@@ -147,7 +149,7 @@ class _DetailsState extends State<Details2> {
                                       ],
                                     ),
                                     child: Center(child: Text('Specification',style: TextStyle(
-                                      color: showSpecification?Colors.black:Colors.white,
+                                      color: showSpecification?Colors.white60:Colors.white,
                                       fontSize: showSpecification?17:20,
                                     ),)),
                                   ),
@@ -167,7 +169,7 @@ class _DetailsState extends State<Details2> {
                                       borderRadius: BorderRadius.circular(10),
                                       color:showDescription?Colors.transparent:Colors.blue,
                                       border: Border.all(
-                                        color: showDescription?Colors.blue:Colors.transparent,
+                                        color: showDescription?Colors.white:Colors.transparent,
                                         width: 2,
                                       ),
                                       boxShadow: [
@@ -188,7 +190,7 @@ class _DetailsState extends State<Details2> {
 
                                     ),
                                     child: Center(child: Text('Description',style: TextStyle(
-                                      color: showDescription?Colors.black:Colors.white,
+                                      color: showDescription?Colors.white60:Colors.white,
                                       fontSize: showDescription?17:20,
                                     ),)),
                                   ),
@@ -199,12 +201,32 @@ class _DetailsState extends State<Details2> {
                         ),
                         Visibility(
                           visible: showDescription,
-                          child: Text('this is the description of project '),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              top: 25,
+                              left: 20,
+                              right: 10,
+                            ),
+                            child: Text('Introducing our high-performance sports bike\nThis dynamic machine combines cutting-edge technology, sleek design, and unmatched performance\nthis sports bike is engineered to elevate your passion for the open road.',style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),),
+                          ),
                         ),
 
                         Visibility(
                             visible: showSpecification,
-                            child: Text('this is the specification of project')
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 20,
+                                left: 20,
+                                right: 10,
+                              ),
+                              child: Text(' Powerful liquid-cooled, four-stroke inline-four engine delivering exceptional horsepower and torque.\nAccelerates from 0 to 60 mph (0 to 100 km/h) in lightning-fast seconds.\nBraking system featuring dual disc brakes at the front and a single disc brake at the rear.\nBike  provides an exhilarating soundtrack for your rides.',style: TextStyle(
+                                fontSize: 16,
+                                color:Colors.white,
+                              ),),
+                            )
                         ),
 
 
@@ -240,9 +262,10 @@ class _DetailsState extends State<Details2> {
                       ),),
                       InkWell(
                         onTap: (){
+                          PaymentData paymentData = PaymentData(vehicalName:vehicalName, rentalData:rentalData);
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) =>  Payment(data:rentalData)),
+                            MaterialPageRoute(builder: (context) =>  Payment(paymentData:paymentData,)),
                           );
                         },
                         child: Container(

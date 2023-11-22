@@ -3,6 +3,7 @@ import 'package:vehical_rental_system/details1.dart';
 import 'package:vehical_rental_system/details2.dart';
 import 'package:vehical_rental_system/details3.dart';
 import 'details.dart';
+import 'history.dart';
 //import 'package:badges/badges.dart';
 import 'package:badges/badges.dart' as custom_badges;
 import 'package:flutter_app_badger/flutter_app_badger.dart';
@@ -102,8 +103,29 @@ class _MyHomePageState extends State<MyHomePage> {
         ,
 
         actions: [
-          _buildIconWithBadge(Icons.shopping_basket_outlined, 5),
-          const SizedBox(width: 20.0),
+          //_buildIconWithBadge(Icons.shopping_basket_outlined,5),
+
+          InkWell(
+
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>History()));
+            },
+            child: Icon(
+              Icons.list_alt_outlined,
+              size: 35,
+              shadows: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.9),
+                    blurRadius: 9,
+                    spreadRadius: 9,
+                    offset: Offset(4,4),
+                  )
+              ],
+
+            ),
+          ),
+          const SizedBox(width: 30.0),
+
         ],
       ),
 
@@ -147,7 +169,10 @@ class _MyHomePageState extends State<MyHomePage> {
                              children : [
                                    Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU' ,height:screenHeight * 0.2,width: screenWidth * 0.8, ),
 
-                               const Text('Mountain Bike',),
+                               const Text('Electric Bike',style: TextStyle(
+                                 fontSize: 18,
+                                 color: Colors.blueAccent,
+                               ),),
 
                                const SizedBox(height: 10,),
 
@@ -162,11 +187,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                  child: Container(
                                    width: 75,
                                    height:25,
-                                   color: Colors.greenAccent,
+
+                                   decoration: BoxDecoration(
+                                     color: Colors.greenAccent,
+                                     borderRadius: BorderRadius.circular(5),
+                                   ),
 
 
                                    child: const Center(
-                                     child: Text(' - Add + ', style: TextStyle(
+                                     child: Text(' RENT ', style: TextStyle(
                                        color: Colors.white70,
                                      ),),
                                    ),
@@ -219,7 +248,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         children : [
                           Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU',height: screenHeight * 0.2,width: screenWidth * 0.8,  ),
 
-                          const Text('Electric Cycle',),
+                          const Text('Mountain Bike',style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blueAccent
+
+                          ),),
 
                           const SizedBox(height: 10,),
 
@@ -233,9 +266,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Container(
                               width: 75,
                               height:25,
-                              color: Colors.greenAccent,
+
+                              decoration: BoxDecoration(
+                                color: Colors.greenAccent,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
                               child: const Center(
-                                child: Text(' - Add + ', style: TextStyle(
+                                child: Text(' RENT ', style: TextStyle(
                                   color: Colors.white70,
                                 ),),
                               ),
@@ -291,7 +328,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         children : [
                           Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU',height: screenHeight * 0.2,width: screenWidth * 0.8,  ),
 
-                          const Text('Bike',),
+                          const Text('Bike',style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blueAccent
+                          ),),
 
                           const SizedBox(height: 10,),
 
@@ -305,9 +345,15 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Container(
                               width: 75,
                               height:25,
-                              color: Colors.greenAccent,
+
+                              decoration: BoxDecoration(
+                                 color: Colors.greenAccent,
+                                borderRadius: BorderRadius.circular(6),
+
+
+                              ),
                               child: const Center(
-                                child: Text(' - Add + ', style: TextStyle(
+                                child: Text(' RENT ', style: TextStyle(
                                   color: Colors.white70,
                                 ),),
                               ),
@@ -358,7 +404,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         children : [
                           Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU',height: screenHeight * 0.2,width: screenWidth * 0.8,  ),
 
-                          const Text('Car',),
+                          const Text('Car',style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blueAccent,
+
+                          ),),
 
                           const SizedBox(height: 10,),
 
@@ -372,9 +422,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Container(
                               width: 75,
                               height:25,
-                              color: Colors.greenAccent,
+
+                              decoration: BoxDecoration(
+                                color: Colors.greenAccent,
+                                borderRadius: BorderRadius.circular(6),
+                              ),
                               child: const Center(
-                                child: Text(' - Add + ', style: TextStyle(
+                                child: Text(' RENT ', style: TextStyle(
                                   color: Colors.white70,
                                 ),),
                               ),

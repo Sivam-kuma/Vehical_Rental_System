@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vehical_rental_system/paymentpage.dart';
 import 'model_class.dart';
+import 'model_class_two.dart';
 
 
 class Details3 extends StatefulWidget {
@@ -21,7 +22,8 @@ class _DetailsState extends State<Details3> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    final rentalData = RentalData(amount: 5.5);
+    Vehicalname vehicalName = Vehicalname(nameof: 'Trek Remedy');
+    RentalData rentalData = RentalData(amount: 5.5);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -67,13 +69,13 @@ class _DetailsState extends State<Details3> {
 
 
           ),
-          Center(
-            child: SvgPicture.asset(
-              'assets/shapes/cycle.svg',
-              height: 50,
-              width: 100,
-            ),
-          ),
+          // Center(
+          //   child: SvgPicture.asset(
+          //     'assets/shapes/cycle.svg',
+          //     height: 50,
+          //     width: 100,
+          //   ),
+          // ),
           Expanded(
             child: Stack(
               children: <Widget>[
@@ -240,9 +242,10 @@ class _DetailsState extends State<Details3> {
                       ),),
                       InkWell(
                         onTap: (){
+                          PaymentData paymentData = PaymentData(vehicalName:vehicalName, rentalData:rentalData);
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) =>  Payment(data:rentalData)),
+                            MaterialPageRoute(builder: (context) =>  Payment(paymentData:paymentData,)),
                           );
                         },
                         child: Container(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vehical_rental_system/paymentpage.dart';
 import 'model_class.dart';
+import 'model_class_two.dart';
 
 
 class Details1 extends StatefulWidget {
@@ -21,15 +22,18 @@ class _DetailsState extends State<Details1> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    final rentalData = RentalData(amount: 3.5);
+    // final rentalData = RentalData(amount: 3.5);
+    // final vehicleName=
+        Vehicalname vehicalName = Vehicalname(nameof: 'Trek Remedy');
+    RentalData rentalData = RentalData(amount: 3.5);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
         title: Center(
           child: Text(
-            'Electric Cycle ',
+            'Mountain Bike',
             style: TextStyle(
-              color: Colors.yellow,
+              color: Colors.deepOrangeAccent,
               fontStyle: FontStyle.italic,
               fontSize: 30,
             ),
@@ -67,13 +71,13 @@ class _DetailsState extends State<Details1> {
 
 
           ),
-          Center(
-            child: SvgPicture.asset(
-              'assets/shapes/cycle.svg',
-              height: 50,
-              width: 100,
-            ),
-          ),
+          // Center(
+          //   child: SvgPicture.asset(
+          //     'assets/shapes/cycle.svg',
+          //     height: 50,
+          //     width: 100,
+          //   ),
+          // ),
           Expanded(
             child: Stack(
               children: <Widget>[
@@ -85,7 +89,7 @@ class _DetailsState extends State<Details1> {
                     height: 300,
                     alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent.withOpacity(0.4),
+                      color: Colors.blue.withOpacity(0.9),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
@@ -124,9 +128,9 @@ class _DetailsState extends State<Details1> {
                                     width: screenWidth * 0.4,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      color: showSpecification?Colors.transparent:Colors.red,
+                                      color: showSpecification?Colors.transparent:Colors.blue,
                                       border: Border.all(
-                                        color: showSpecification?Colors.red:Colors.transparent, // Color of the outer boundary
+                                        color: showSpecification?Colors.white:Colors.transparent, // Color of the outer boundary
                                         width: 2, // Thickness of the outer boundary
                                       ),
 
@@ -147,7 +151,7 @@ class _DetailsState extends State<Details1> {
                                       ],
                                     ),
                                     child: Center(child: Text('Specification',style: TextStyle(
-                                      color: showSpecification?Colors.black:Colors.white,
+                                      color: showSpecification?Colors.white60:Colors.white,
                                       fontSize: showSpecification?17:20,
                                     ),)),
                                   ),
@@ -167,7 +171,7 @@ class _DetailsState extends State<Details1> {
                                       borderRadius: BorderRadius.circular(10),
                                       color:showDescription?Colors.transparent:Colors.blue,
                                       border: Border.all(
-                                        color: showDescription?Colors.blue:Colors.transparent,
+                                        color: showDescription?Colors.white:Colors.transparent,
                                         width: 2,
                                       ),
                                       boxShadow: [
@@ -188,7 +192,7 @@ class _DetailsState extends State<Details1> {
 
                                     ),
                                     child: Center(child: Text('Description',style: TextStyle(
-                                      color: showDescription?Colors.black:Colors.white,
+                                      color: showDescription?Colors.white60:Colors.white,
                                       fontSize: showDescription?17:20,
                                     ),)),
                                   ),
@@ -199,12 +203,31 @@ class _DetailsState extends State<Details1> {
                         ),
                         Visibility(
                           visible: showDescription,
-                          child: Text('this is the description of project '),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              top: 25,
+                              right: 20,
+                            ),
+                            child: Text('Off-Road Adventure\nDurable Construction\nWide, Knobby Tires\nSuspension System\nMultiple Gears\nDisc Brakes\n',style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),),
+                          ),
                         ),
 
                         Visibility(
                             visible: showSpecification,
-                            child: Text('this is the specification of project')
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 25,
+                                left: 20,
+                                right: 10,
+                              ),
+                              child: Text('Aluminum, carbon fiber, and steel are common frame materials.\nMountain bikes come in various wheel sizes, including 26 inches, 27.5 inches\nSuspension travel ranges from 80mm to 200mm\nMountain bikes often feature flat or riser handlebars.\n',style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),),
+                            )
                         ),
 
 
@@ -240,9 +263,10 @@ class _DetailsState extends State<Details1> {
                       ),),
                       InkWell(
                         onTap: (){
+                          PaymentData paymentData = PaymentData(vehicalName:vehicalName, rentalData:rentalData);
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) =>  Payment(data:rentalData)),
+                            MaterialPageRoute(builder: (context) =>  Payment(paymentData:paymentData,)),
                           );
                         },
                         child: Container(

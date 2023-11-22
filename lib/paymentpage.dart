@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:vehical_rental_system/history.dart';
 import 'package:vehical_rental_system/model_class.dart';
+import 'package:vehical_rental_system/my_home_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:vehical_rental_system/utils/database_helperclass.dart';
+import 'package:vehical_rental_system/modelclass/classfile.dart';
+
+import 'model_class_two.dart';
 
 class Payment extends StatefulWidget {
 
-  final RentalData data;
-    Payment({Key? key, required this.data}) : super(key: key);
+  final PaymentData paymentData;
+    Payment({Key? key, required this.paymentData}) : super(key: key);
 
 
 
@@ -13,6 +20,61 @@ class Payment extends StatefulWidget {
 }
 
 class _PaymentState extends State<Payment> {
+   DatabaseHelper? _databaseHelper;
+
+  @override
+  void initState() {
+    super.initState();
+    _databaseHelper = DatabaseHelper();
+    // _initDatabaseHelper().then((_) {
+    //   Navigator.pushReplacement(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => History()),
+    //   );
+    // });
+  }
+
+  // Future<Null> _initDatabaseHelper() async {
+  //   _databaseHelper = DatabaseHelper();
+  //   await _databaseHelper?.initializeDatabase();
+  //   // You can add more initialization steps here if needed
+  // }
+
+  void onPaymentSucess () async{
+    final amount = widget.paymentData.rentalData.amount;
+    final nameVehicle=widget.paymentData.vehicalName.nameof;
+    final   double subTotal=amount as double;
+    final double charges=0.25;
+    final double discount=25;
+    final double finalamount=calculateTotal(subTotal, charges, discount);
+
+
+    Node paymentNode = Node (
+      null,
+      nameVehicle,
+      "booked",
+      finalamount.toInt(),
+      DateTime.now().millisecondsSinceEpoch,
+
+    );
+    await _databaseHelper?.insertNote(paymentNode);
+
+    print("Payment successful!");
+
+    Fluttertoast.showToast(
+      msg: "Your Vehicle has been booked .",
+      fontSize: 20,
+      textColor: Colors.indigo,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.white54,
+    );
+
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => MyHomePage()),
+          (route) => false,
+    );
+  }
 
   // double calculateTotalAmount(double subtotal, double charges, double discount) {
   //   double totalAmount = subtotal + charges;
@@ -31,8 +93,12 @@ class _PaymentState extends State<Payment> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    final amount = widget.data.amount;
-      final   double subTotal=amount;
+
+    // print('Amount: $amount');
+
+    final amount = widget.paymentData.rentalData.amount;
+    final nameVehicle=widget.paymentData.vehicalName.nameof;
+    final   double subTotal=amount as double;
       final double charges=0.25;
       final double discount=25;
       final double finalamount=calculateTotal(subTotal, charges, discount);
@@ -41,7 +107,7 @@ class _PaymentState extends State<Payment> {
     return  Scaffold(
       appBar: AppBar(
              toolbarHeight: 80,
-        title: Center(child: Text('Title & Description')),
+        title: Center(child: Text('$nameVehicle')),
 
 
 
@@ -62,13 +128,26 @@ class _PaymentState extends State<Payment> {
               Container(
                 height: 40,
                 width: screenWidth * 0.65,
+               child: Center(
+                 child: Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: TextField(
+                      onChanged : (text){
+                    print("Input Text: $text");
+                    },
+                     decoration: InputDecoration(
+                       border: InputBorder.none,
+                     ),
+                        ),
+                 ),
+               ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     color:Colors.indigo,
                     width:2,
                   )
-                      
+
                 ),
               ),
               SizedBox(width: 5,),
@@ -83,11 +162,11 @@ class _PaymentState extends State<Payment> {
                   fontSize: 20,
                   color: Colors.greenAccent,
                 ),)),
-                
+
               )
             ],
           ),
-          SizedBox(height: 20,),
+          SizedBox(height: 50,),
           Padding(
             padding: const EdgeInsets.only(
               left: 10,
@@ -235,11 +314,17 @@ class _PaymentState extends State<Payment> {
                                borderRadius: BorderRadius.circular(10),
                              ),
                              child: Center(
-                               child: Text(' PAYMENT ',style: TextStyle(
-                                 fontSize: 25,
-                                 fontStyle:FontStyle.italic,
-                                 color: Colors.white,
-                               ),),
+                               child: InkWell(
+                                 onTap:(){
+                                  onPaymentSucess();
+
+                                 },
+                                 child: Text(' PAYMENT ',style: TextStyle(
+                                   fontSize: 25,
+                                   fontStyle:FontStyle.italic,
+                                   color: Colors.white,
+                                 ),),
+                               ),
                              ),
                            ),
                          ),
