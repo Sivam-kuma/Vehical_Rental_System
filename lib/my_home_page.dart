@@ -9,7 +9,7 @@ import 'package:badges/badges.dart' as custom_badges;
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 
 import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {

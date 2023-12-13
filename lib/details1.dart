@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vehical_rental_system/paymentpage.dart';
 import 'model_class.dart';
+import 'model_class_two.dart';
 
 
 class Details1 extends StatefulWidget {
@@ -22,6 +23,8 @@ class _DetailsState extends State<Details1> {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     final rentalData = RentalData(amount: 3.5);
+    final Vehiclename vehicleName = Vehiclename(name:'bike');
+    final VehicleImage vehicleImage = VehicleImage(image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU');
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -241,8 +244,8 @@ class _DetailsState extends State<Details1> {
                       InkWell(
                         onTap: (){
                           Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) =>  Payment(data:rentalData)),
+                              context,
+                              MaterialPageRoute(builder: (context) => Payment(paymentData: PaymentData(vehicleName: vehicleName, rentalData: rentalData, vehicleImage: vehicleImage)))
                           );
                         },
                         child: Container(

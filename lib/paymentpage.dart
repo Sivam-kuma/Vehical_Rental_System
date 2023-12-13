@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:vehical_rental_system/history.dart';
 import 'package:vehical_rental_system/model_class.dart';
 import 'package:vehical_rental_system/my_home_page.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:vehical_rental_system/utils/database_helperclass.dart';
 import 'package:vehical_rental_system/modelclass/classfile.dart';
 
@@ -42,8 +42,9 @@ class _PaymentState extends State<Payment> {
 
   void onPaymentSucess () async{
     final amount = widget.paymentData.rentalData.amount;
-    final nameVehicle=widget.paymentData.vehicalName.nameof;
-    final   double subTotal=amount as double;
+    final nameVehicle=widget.paymentData.vehicleName.name;
+    final vehicleImage=widget.paymentData.vehicleImage.image;
+    final  double subTotal=amount as double;
     final double charges=0.25;
     final double discount=25;
     final double finalamount=calculateTotal(subTotal, charges, discount);
@@ -97,7 +98,8 @@ class _PaymentState extends State<Payment> {
     // print('Amount: $amount');
 
     final amount = widget.paymentData.rentalData.amount;
-    final nameVehicle=widget.paymentData.vehicalName.nameof;
+    final nameVehicle=widget.paymentData.vehicleName.name;
+    final vehicleImage=widget.paymentData.vehicleImage.image;
     final   double subTotal=amount as double;
       final double charges=0.25;
       final double discount=25;
@@ -117,8 +119,9 @@ class _PaymentState extends State<Payment> {
           Center(
             child: Container(
               height: 200,
-              width: 200,
+              width: 250,
               color: Colors.blue,
+              child:Image.network('$vehicleImage',fit: BoxFit.cover,),
             ),
           ),
           SizedBox(height: 25,),

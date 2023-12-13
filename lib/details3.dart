@@ -22,8 +22,9 @@ class _DetailsState extends State<Details3> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    Vehicalname vehicalName = Vehicalname(nameof: 'Trek Remedy');
+    Vehiclename vehicleName = Vehiclename(name: 'Trek Remedy');
     RentalData rentalData = RentalData(amount: 5.5);
+    final VehicleImage vehicleImage = VehicleImage(image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU');
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -242,10 +243,9 @@ class _DetailsState extends State<Details3> {
                       ),),
                       InkWell(
                         onTap: (){
-                          PaymentData paymentData = PaymentData(vehicalName:vehicalName, rentalData:rentalData);
                           Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) =>  Payment(paymentData:paymentData,)),
+                              context,
+                              MaterialPageRoute(builder: (context) => Payment(paymentData: PaymentData(vehicleName: vehicleName, rentalData: rentalData, vehicleImage: vehicleImage)))
                           );
                         },
                         child: Container(
