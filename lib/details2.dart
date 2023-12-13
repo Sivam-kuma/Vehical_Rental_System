@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vehical_rental_system/paymentpage.dart';
 import 'model_class.dart';
 import 'model_class_two.dart';
@@ -22,9 +22,8 @@ class _DetailsState extends State<Details2> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    Vehicalname vehicalName = Vehicalname(nameof:('Harley Fat Boy'));
+    Vehicalname vehicalName = Vehicalname(nameof: 'Trek Remedy');
     RentalData rentalData = RentalData(amount: 4.5);
-    Vehicleimage vehicleImage =Vehicleimage(imageof: 'https://www.shutterstock.com/image-vector/cartoon-illustration-anime-art-character-600nw-2320688797.jpg');
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -51,7 +50,7 @@ class _DetailsState extends State<Details2> {
 
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.network('https://www.shutterstock.com/image-vector/cartoon-illustration-anime-art-character-600nw-2320688797.jpg',
+              child: Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU',
                 height: 50,
                 width: 50,
                 fit: BoxFit.fill,),
@@ -88,7 +87,7 @@ class _DetailsState extends State<Details2> {
                     height: 300,
                     alignment: Alignment.bottomCenter,
                     decoration: BoxDecoration(
-                      color: Colors.blue.withOpacity(0.7),
+                      color: Colors.blue.withOpacity(0.9),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
@@ -247,7 +246,7 @@ class _DetailsState extends State<Details2> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 height: 50,
-                color: Colors.indigo.withOpacity(0.5),
+                color: Colors.indigo,
                 child:  Padding(
                   padding: const EdgeInsets.only(
                     left: 20,
@@ -263,7 +262,7 @@ class _DetailsState extends State<Details2> {
                       ),),
                       InkWell(
                         onTap: (){
-                          PaymentData paymentData = PaymentData(vehicalName:vehicalName, rentalData:rentalData,vehicleImage: vehicleImage);
+                          PaymentData paymentData = PaymentData(vehicalName:vehicalName, rentalData:rentalData);
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) =>  Payment(paymentData:paymentData,)),

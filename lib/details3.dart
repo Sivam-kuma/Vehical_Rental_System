@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vehical_rental_system/paymentpage.dart';
 import 'model_class.dart';
 import 'model_class_two.dart';
@@ -22,9 +22,8 @@ class _DetailsState extends State<Details3> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    Vehicalname vehicalName = Vehicalname(nameof: 'Aventador');
+    Vehicalname vehicalName = Vehicalname(nameof: 'Trek Remedy');
     RentalData rentalData = RentalData(amount: 5.5);
-    Vehicleimage vehicleImage =Vehicleimage(imageof: 'https://i.pinimg.com/736x/90/85/44/908544ab4e4f9369ac4b3f578543172e.jpg');
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -51,7 +50,7 @@ class _DetailsState extends State<Details3> {
 
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.network('https://i.pinimg.com/736x/90/85/44/908544ab4e4f9369ac4b3f578543172e.jpg',
+              child: Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU',
                 height: 50,
                 width: 50,
                 fit: BoxFit.fill,),
@@ -227,7 +226,7 @@ class _DetailsState extends State<Details3> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 height: 50,
-                color: Colors.indigo.withOpacity(0.5),
+                color: Colors.indigo,
                 child:  Padding(
                   padding: const EdgeInsets.only(
                     left: 20,
@@ -243,7 +242,7 @@ class _DetailsState extends State<Details3> {
                       ),),
                       InkWell(
                         onTap: (){
-                          PaymentData paymentData = PaymentData(vehicalName:vehicalName, rentalData:rentalData,vehicleImage:vehicleImage);
+                          PaymentData paymentData = PaymentData(vehicalName:vehicalName, rentalData:rentalData);
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) =>  Payment(paymentData:paymentData,)),
