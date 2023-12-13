@@ -4,12 +4,12 @@ import 'package:vehical_rental_system/details2.dart';
 import 'package:vehical_rental_system/details3.dart';
 import 'details.dart';
 import 'history.dart';
-
+//import 'package:badges/badges.dart';
 import 'package:badges/badges.dart' as custom_badges;
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 
 import 'package:path_provider/path_provider.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -167,8 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                              children : [
-                                   Image.network('https://media.newyorker.com/photos/598368e090d4a86520b4da32/1:1/w_2560,h_2560,c_limit/Beller-The-Electric-Bike-Takes-Manhattan.jpg https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU'
-                       ,height:screenHeight * 0.2,width: screenWidth * 0.8, ),
+                                   Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU' ,height:screenHeight * 0.2,width: screenWidth * 0.8, ),
 
                                const Text('Electric Bike',style: TextStyle(
                                  fontSize: 18,
@@ -247,7 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children : [
-                          Image.network('https://ih1.redbubble.net/image.4878977312.0845/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg',height: screenHeight * 0.2,width: screenWidth * 0.8,  ),
+                          Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU',height: screenHeight * 0.2,width: screenWidth * 0.8,  ),
 
                           const Text('Mountain Bike',style: TextStyle(
                             fontSize: 18,
@@ -327,7 +326,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children : [
-                          Image.network('https://www.shutterstock.com/image-vector/cartoon-illustration-anime-art-character-600nw-2320688797.jpg',height: screenHeight * 0.2,width: screenWidth * 0.8,  ),
+                          Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU',height: screenHeight * 0.2,width: screenWidth * 0.8,  ),
 
                           const Text('Bike',style: TextStyle(
                             fontSize: 18,
@@ -403,7 +402,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children : [
-                          Image.network('https://i.pinimg.com/736x/90/85/44/908544ab4e4f9369ac4b3f578543172e.jpg',height: screenHeight * 0.2,width: screenWidth * 0.8,  ),
+                          Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5CHK6n4xtcpFyZvlZ80v7_AjWWasQiXDpLz5N86cN38RpZNQuGdR1HeGoCKFH4wWMcyY&usqp=CAU',height: screenHeight * 0.2,width: screenWidth * 0.8,  ),
 
                           const Text('Car',style: TextStyle(
                             fontSize: 18,

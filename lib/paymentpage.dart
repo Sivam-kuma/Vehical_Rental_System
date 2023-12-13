@@ -43,7 +43,6 @@ class _PaymentState extends State<Payment> {
   void onPaymentSucess () async{
     final amount = widget.paymentData.rentalData.amount;
     final nameVehicle=widget.paymentData.vehicalName.nameof;
-    final vehicalImage=widget.paymentData.vehicleImage.imageof;
     final   double subTotal=amount as double;
     final double charges=0.25;
     final double discount=25;
@@ -66,8 +65,8 @@ class _PaymentState extends State<Payment> {
       msg: "Your Vehicle has been booked .",
       fontSize: 20,
       textColor: Colors.indigo,
-      gravity: ToastGravity.CENTER,
-      backgroundColor: Colors.white,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.white54,
     );
 
     Navigator.pushAndRemoveUntil(
@@ -99,7 +98,6 @@ class _PaymentState extends State<Payment> {
 
     final amount = widget.paymentData.rentalData.amount;
     final nameVehicle=widget.paymentData.vehicalName.nameof;
-    final vehicleImage=widget.paymentData.vehicleImage.imageof;
     final   double subTotal=amount as double;
       final double charges=0.25;
       final double discount=25;
@@ -119,16 +117,8 @@ class _PaymentState extends State<Payment> {
           Center(
             child: Container(
               height: 200,
-              width: 250,
-
-              child:ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                  child: Image.network('$vehicleImage',fit:BoxFit.cover,)),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.blue,
-              ),
-
+              width: 200,
+              color: Colors.blue,
             ),
           ),
           SizedBox(height: 25,),
@@ -298,7 +288,7 @@ class _PaymentState extends State<Payment> {
                    alignment: Alignment.bottomCenter,
                    height: 55,
                    decoration: BoxDecoration(
-                     color: Colors.indigo.withOpacity(0.5),
+                     color: Colors.indigo,
                      borderRadius: BorderRadius.only(
                        topLeft:Radius.circular(10),
                        topRight: Radius.circular(10),
